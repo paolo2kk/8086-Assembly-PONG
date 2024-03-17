@@ -1,3 +1,5 @@
+
+https://github.com/paolo2kk/8086-Assembly-PONG/assets/121867499/f0404571-db5e-49bd-a11e-39fa3e7fccfe
 INSTALLATION:
 
 1) Download DOSbox from https://www.dosbox.com/
@@ -14,5 +16,6 @@ link pong
 
 pong
 
-![OIG4](https://github.com/paolo2kk/8086-Assembly-PONG/assets/121867499/7598fd46-375e-40c4-bec2-a9e3a9b663e2)
-_AI Assembly illustration_
+**GAMEPLAY**
+
+https://github.com/paolo2kk/8086-Assembly-PONG/assets/121867499/bb4e4324-11c9-4669-bc7f-3f8e7df12526
