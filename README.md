@@ -1,5 +1,3 @@
-
-https://github.com/paolo2kk/8086-Assembly-PONG/assets/121867499/f0404571-db5e-49bd-a11e-39fa3e7fccfe
 INSTALLATION:
 
 1) Download DOSbox from https://www.dosbox.com/
