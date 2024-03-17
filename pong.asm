@@ -31,6 +31,9 @@ DATA SEGMENT PARA 'DATA'
 	PADDLE_HEIGHT DW 1fh
 	PADDLE_VELOCITY DW 05h
 	
+	TXT_P1_P DB '0', '$'
+	TXT_P2_P DB '0', '$'
+	
 DATA ENDS
 
 CODE SEGMENT PARA 'CODE'
@@ -63,6 +66,7 @@ CODE SEGMENT PARA 'CODE'
 			
 			CALL MOVE_PADDLES
 			CALL DRAW_PADDLES
+			CALL DRAW_UI
 			
 			JMP CHECK_TIME ;after everything, check time again
 		
@@ -175,12 +179,14 @@ CODE SEGMENT PARA 'CODE'
 		PLAYER_TWOP:
 			INC PD_R_P
 			CALL RESET_BALL_POSITION
+			CALL UPDATE_TXT_P2
 			CMP PD_R_P, 05h
 			JGE GAME_OVER
 			RET
 		PLAYER_ONEP:
 			INC PD_L_P
 			CALL RESET_BALL_POSITION
+			CALL UPDATE_TXT_P1
 			CMP PD_L_P, 05h
 			JGE GAME_OVER
 			RET
@@ -188,6 +194,9 @@ CODE SEGMENT PARA 'CODE'
 		GAME_OVER:
 			MOV PD_L_P, 00h
 			MOV PD_R_P, 00h
+			CALL UPDATE_TXT_P1
+			CALL UPDATE_TXT_P2
+
 			RET
 		MOVE_BALL_VERT:
 		MOV AX, BALL_VELOCITY_Y
@@ -390,6 +399,57 @@ CODE SEGMENT PARA 'CODE'
 		RET
 	RESET_SCREEN ENDP
 	
+	DRAW_UI PROC NEAR
+	
+		MOV AH, 02h   ;set cursor pos
+		MOV BH, 00h	  ;set page number
+		MOV DH, 04h   ;set row
+		MOV DL, 06h  ;set column
+		INT 10h
+		
+		MOV AH, 09h
+		LEA DX, TXT_P1_P
+		INT 21h
+		
+		
+		MOV AH, 02h   ;set cursor pos
+		MOV BH, 00h	  ;set page number
+		MOV DH, 04h   ;set row
+		MOV DL, 098h  ;set column
+		INT 10h
+		
+		MOV AH, 09h
+		LEA DX, TXT_P2_P
+		INT 21h
+		
+		
+		RET
+	DRAW_UI ENDP
+	
+	UPDATE_TXT_P1 PROC NEAR
+	
+		XOR AX, AX
+		MOV AL, PD_L_P
+		
+		ADD AL, 30h
+		MOV [TXT_P1_P], AL
+		
+		
+		RET
+	
+	UPDATE_TXT_P1 ENDP
+	
+	UPDATE_TXT_P2 PROC NEAR
+		XOR AX, AX
+		MOV AL, PD_R_P
+		
+		ADD AL, 30h
+		MOV [TXT_P2_P], AL
+		
+		
+		RET
+	
+	UPDATE_TXT_P2 ENDP
 
 CODE ENDS
 END
