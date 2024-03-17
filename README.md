@@ -14,4 +14,4 @@ link pong
 
 pong
 
-![traced-ASMchan](https://github.com/paolo2kk/8086-Assembly-PONG/assets/121867499/4107d231-009c-4b9a-8738-506f93da8db5)
+![OIG4](https://github.com/paolo2kk/8086-Assembly-PONG/assets/121867499/7598fd46-375e-40c4-bec2-a9e3a9b663e2)
